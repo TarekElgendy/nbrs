@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\Calculation\Web\Service;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class HomeController extends Controller
@@ -32,6 +33,8 @@ class HomeController extends Controller
     } //end of logout
     public function index()
     {
+
+
 
 
         $sliders = Page::where('type', 'sliders')->where('status', 'active')->get();

@@ -356,7 +356,6 @@
 
                                             <button type="submit" class=""  title="@lang('site.AddToCart')"   data-bs-toggle="tooltip" data-bs-placement="top"  ><i class="fas fa-cart-plus"></i></button>
 
-
                                         </form>
                                     <a href="{{ route('productDetails', ['id' => encodeId($product->id), 'slug' => make_slug($product->title)]) }}"
                                         data-bs-toggle="tooltip" data-bs-placement="top" title="@lang('site.details')"><i

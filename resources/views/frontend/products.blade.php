@@ -192,8 +192,8 @@
                                     @foreach ($otherCategories as $category)
                                         <div class="form-check">
                                             <input class="form-check-input" name="category_id[]" type="checkbox"
-                                                value="{{ $category->id ?? '' }}" id="chk0">
-                                            <label class="form-check-label" for="chk0">
+                                                value="{{ $category->id ?? '' }}" id="chk{{$category->id}}">
+                                            <label class="form-check-label" for="chk{{$category->id}}">
                                                 {{ $category->title ?? '' }}
                                             </label>
                                         </div>
@@ -210,8 +210,8 @@
                                     @foreach ($brands as $brand)
                                         <div class="form-check">
                                             <input class="form-check-input" name="brand_id[]" type="checkbox"
-                                                value="{{ $brand->id ?? '' }}" id="chk0">
-                                            <label class="form-check-label" for="chk0">
+                                                value="{{ $brand->id ?? '' }}" id="chkB{{$brand->id}}">
+                                            <label class="form-check-label" for="chkB{{$brand->id}}">
                                                 {{ $brand->title ?? '' }}
                                             </label>
                                         </div>

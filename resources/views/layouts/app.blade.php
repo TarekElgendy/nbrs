@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
 
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,14 +36,15 @@
 </head>
 
 <body>
+
     @include('partials._errors')
 
 
 
     <!-- Preloader -->
-    <div class="preloader">
+    {{-- <div class="preloader">
         <img src="{{ url('/') }}/frontend/dist/imgs/loaders/08.gif" alt="" />
-    </div>
+    </div> --}}
     <!-- //Preloader -->
     <!-- START => HEADER -->
     <header>
@@ -260,10 +262,12 @@
     <script src="{{ url('/') }}/frontend/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url('/') }}/frontend/dist/js/swiper-bundle.min.js"></script>
     <script src="{{ url('/') }}/frontend/dist/js/jquery.fancybox.min.js"></script>
-    <script src="{{ url('/') }}/frontend/dist/js/jquery.selectric.js"></script>
+    {{-- <script src="{{ url('/') }}/frontend/dist/js/jquery.selectric.js"></script> --}}
     <script src="{{ url('/') }}/frontend/dist/js/numscroller-1.0.js"></script>
     <script src="{{ url('/') }}/frontend/dist/js/main.js" defer></script>
     @livewireScripts
+    @include('sweetalert::alert')
+
 </body>
 
 </html>

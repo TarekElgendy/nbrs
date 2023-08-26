@@ -4,7 +4,7 @@
   $(".preloader").delay(600).fadeOut();
 
   // Select
-  $("select").selectric();
+  //$("select").selectric();
 
   Fancybox.bind("[data-fancybox]", {
     // Your options go here

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title_page')
-   @lang('site.cart')
+    @lang('site.cart')
 @endsection
 @section('des_seo')
 @endsection
@@ -12,9 +12,9 @@
         <div class="container d-flex align-items-center justify-content-between">
             <strong class="h4 d-block"> @lang('site.cart') </strong>
             <ul>
-                <li><a href="{{route('home')}}" aria-label="home"><i class="fas fa-home fa-lg"></i></a></li>
+                <li><a href="{{ route('home') }}" aria-label="home"><i class="fas fa-home fa-lg"></i></a></li>
                 <li><span> / </span></li>
-                <li>  @lang('site.cart')  </li>
+                <li> @lang('site.cart') </li>
             </ul>
         </div>
     </div>
@@ -42,46 +42,57 @@
                                 </thead>
                                 <tbody>
                                     @forelse ($cartItems as $key=>$item)
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
 
 
-                                    <tr>
-                                        <td>{{$key+1}}</td>
-
-
-                                        <td><a href="product(left-sidebar).html"><img src="{{$item->product->image_path}}" class="img-fluid" alt="{{$item->product->title}}"></a></td>
-                                        <td>{{$item->product->title}}</td>
-                                        <td>{{$item->product->ActualPrice . currency()}}</td>
-                                        <td>
-                                            <form action="{{ route('updateCart') }}" method="post" enctype="multipart/form-data">
-                                                {{ csrf_field() }}
-                                                {{ method_field('post') }}
-                                                <input type="hidden" name="product_id" value="{{ $item->product->id }}" id="">
-                                                <input type="hidden" name="cart_item_id" value="{{ $item->id }}" id="">
-                                                <div class="product-actions">
-                                                    <div class="product_qty justify-content-start">
-                                                        <div>
-                                                            <span class="qty-minus">-</span>
-                                                            <input type="number" name="quantity" value="{{$item->quantity}}" />
-                                                            <span class="qty-plus">+</span>
+                                            <td><a href="product(left-sidebar).html"><img
+                                                        src="{{ $item->product->image_path }}" class="img-fluid"
+                                                        alt="{{ $item->product->title }}"></a></td>
+                                            <td>{{ $item->product->title }}</td>
+                                            <td>{{ $item->product->ActualPrice . currency() }}</td>
+                                            <td>
+                                                <form action="{{ route('updateCart') }}" method="post"
+                                                    enctype="multipart/form-data">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('post') }}
+                                                    <input type="hidden" name="product_id" value="{{ $item->product->id }}"
+                                                        id="">
+                                                    <input type="hidden" name="cart_item_id" value="{{ $item->id }}"
+                                                        id="">
+                                                    <div class="product-actions">
+                                                        <div class="product_qty justify-content-start">
+                                                            <div>
+                                                                <span class="qty-minus">-</span>
+                                                                <input type="number" name="quantity"
+                                                                    value="{{ $item->quantity }}" />
+                                                                <span class="qty-plus">+</span>
+                                                            </div>
                                                         </div>
+
+
                                                     </div>
+                                                    <button type="submit" class="btn-style   "><i class="fas fa-edit"></i>
+                                                        @lang('site.update') </button>
+                                                </form>
+                                            </td>
 
 
-                                                </div>
-                                                <button type="submit" class="btn-style   "><i class="fas fa-edit"></i> @lang('site.update') </button>
-                                            </form>
-                                        </td>
-
-
-                                        <td>{{$item->quantity * $item->product->ActualPrice . currency() }}</td>
+                                            <td>{{ $item->quantity * $item->product->ActualPrice . currency() }}</td>
 
 
 
-                                        {{-- <td><a href=""><i class="fas fa-times fa-2x"></i></a></td> --}}
-                                        <td><a href="{{route('cart.distroy',['id'=>encodeId($item->id)])}}"><i class="fas fa-times fa-2x"></i></a></td>
-                                    </tr>
+                                            {{-- <td><a href=""><i class="fas fa-times fa-2x"></i></a></td> --}}
+                                            <td>
+                                                <a href="{{ route('cart.distroy', ['id' => encodeId($item->id)]) }}"
+                                                    class="btn btn-danger delete-button">
+                                                    <i class="fas fa-times fa-2x"></i>
+                                                </a>
+
+
+                                            </td>
+                                        </tr>
                                     @empty
-
                                     @endforelse
                                 </tbody>
                             </table>

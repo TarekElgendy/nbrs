@@ -21,6 +21,7 @@
         "maatwebsite/excel": "^3.1",
         "mcamara/laravel-localization": "^1.7",
         "psr/simple-cache": "1.0",
+        "realrashid/sweet-alert": "^7.1",
         "santigarcor/laratrust": "^7.1",
         "shetabit/visitor": "^3.1",
         "simplesoftwareio/simple-qrcode": "^4.2",

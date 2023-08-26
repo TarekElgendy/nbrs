@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
@@ -42,7 +43,7 @@ class CartController extends Controller
             // }
 
             if ($cartItem->quantity + 1 > $product->stock) {
-               
+
                 return redirect()->back()->with('error', 'Requested quantity not available in stock.');
             } //check the stock
             CartItem::where('cart_id', $cart->id)->where('product_id', $productId)->update([
@@ -140,7 +141,9 @@ class CartController extends Controller
     {
 
 
-        $cart = CartItem::where('id', decodeId($id))->delete();
+        toast('Success Toast','success' ,40000);
+
+        // $cart = CartItem::where('id', decodeId($id))->delete();
         return redirect()->back()->with('error', 'Deleted');
 
     } //end of showCart
